@@ -9,7 +9,7 @@ async def is_admin(client, message: Message):
     member = await client.get_chat_member(chat_id, user_id)
     return member.status in ("administrator", "creator")
 
-@app.on_message(filters.command("start_bot"))
+@app.on_message(filters.command(["start_bot", "sb"]))
 async def start_bot(client: Client, message: Message):
     if await is_admin(client, message):
         await message.reply("Bot is now running!")
