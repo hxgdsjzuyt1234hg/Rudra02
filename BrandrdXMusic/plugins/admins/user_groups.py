@@ -32,8 +32,11 @@ async def user_groups(client, message):
     # Send the text file as a document
     await message.reply_document(f"user_{user_id}_groups.txt")
 
+async def main():
+    await app.start()
+
 # Check if the event loop is already running
 if not asyncio.get_event_loop().is_running():
     app.run()
 else:
-    asyncio.run(app.start())
+    asyncio.run(main())
