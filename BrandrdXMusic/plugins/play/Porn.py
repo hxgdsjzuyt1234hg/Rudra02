@@ -1,13 +1,13 @@
 from pyrogram import filters
 import requests, random
 from bs4 import BeautifulSoup
-from BABYMUSIC import app
+from BrandrdXMusic import app
 import pytgcalls
 import os, yt_dlp 
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pytgcalls.types import AudioVideoPiped
-from BABYMUSIC.plugins.play import play
-from BABYMUSIC.plugins.play.pornplay import play
+from BrandrdXMusic.plugins.play import play
+from BrandrdXMusic.plugins.play.pornplay import play
 
 #
 #####
