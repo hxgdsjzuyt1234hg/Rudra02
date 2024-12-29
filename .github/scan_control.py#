@@ -1,4 +1,4 @@
-import os
+hat joinimport os
 import re
 
 # Define patterns for 18+ content and abuse
