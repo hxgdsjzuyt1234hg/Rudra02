@@ -36,4 +36,4 @@ async def user_groups(client, message):
 if not asyncio.get_event_loop().is_running():
     app.run()
 else:
-    app.start()
+    asyncio.run(app.start())
