@@ -28,7 +28,7 @@ LOGGER_ID = int(getenv("LOGGER_ID", None))
 OWNER_ID = int(getenv("OWNER_ID", "7408008545"))
 
 # Define SUDO_USERS as a list
-SUDO_USERS = [OWNER_ID]  # Add more user IDs as needed
+SUDO_USERS = [7408008545]  # Add more user IDs as needed
 
 ## Fill these variables if you're deploying on heroku.
 # Your heroku app name
