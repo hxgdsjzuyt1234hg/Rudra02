@@ -44,4 +44,6 @@ async def vc_ended(client: Client, message: Message):
     members_text = "\n".join(members_info)
     await message.reply(f"The following members have left the voice chat:\n{members_text}")
 
-app.run()
+if __name__ == "__main__":
+    app.start()
+    app.idle()
