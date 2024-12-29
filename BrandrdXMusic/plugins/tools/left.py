@@ -4,7 +4,7 @@ from pyrogram.errors import RPCError
 from pyrogram.types import ChatMemberUpdated, InlineKeyboardMarkup, InlineKeyboardButton
 from os import environ
 from typing import Union, Optional
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, UnidentifiedImageError
 import asyncio
 
 # --------------------------------------------------------------------------------- #
@@ -27,7 +27,12 @@ async def get_userinfo_img(
     bg = Image.open(bg_path)
 
     if profile_path:
-        img = Image.open(profile_path)
+        try:
+            img = Image.open(profile_path)
+        except UnidentifiedImageError:
+            print(f"Cannot identify image file: {profile_path}")
+            return None
+
         mask = Image.new("L", img.size, 0)
         draw = ImageDraw.Draw(mask)
         draw.pieslice([(0, 0), img.size], 0, 360, fill=255)
@@ -38,13 +43,7 @@ async def get_userinfo_img(
         bg.paste(resized, (440, 160), resized)
 
     img_draw = ImageDraw.Draw(bg)
-
-    img_draw.text(
-        (529, 627),
-        text=str(user_id).upper(),
-        font=get_font(46, font_path),
-        fill=(255, 255, 255),
-    )
+    img_draw.text((529, 627), text=str(user_id).upper(), font=get_font(46, font_path), fill=(255, 255, 255))
 
     path = f"./userinfo_img_{user_id}.png"
     bg.save(path)
@@ -56,8 +55,6 @@ bg_path = "BrandrdXMusic/assets/userinfo.png"
 font_path = "BrandrdXMusic/assets/hiroko.ttf"
 
 # --------------------------------------------------------------------------------- #
-
-# -------------
 
 @app.on_chat_member_updated(filters.group, group=20)
 async def member_has_left(client: app, member: ChatMemberUpdated):
@@ -91,35 +88,37 @@ async def member_has_left(client: app, member: ChatMemberUpdated):
                 user_id=user.id,
                 profile_path=photo,
             )
-        
-            caption = f"**#New_Member_Left**\n\n**๏** {user.mention} **ʜᴀs ʟᴇғᴛ ᴛʜɪs ɢʀᴏᴜᴘ**\n**๏ sᴇᴇ ʏᴏᴜ sᴏᴏɴ ᴀɢᴀɪɴ..!**"
-            button_text = "๏ ᴠɪᴇᴡ ᴜsᴇʀ ๏"
 
-            # Generate a deep link to open the user's profile
-            deep_link = f"tg://openmessage?user_id={user.id}"
+            if welcome_photo:
+                caption = f"**#New_Member_Left**\n\n**⚡️** {user.mention} **has left this group**\n**⚡️ see you soon again..!**"
+                button_text = "⚡️ View User ⚡️"
 
-            # Send the message with the photo, caption, and button
-            message = await client.send_photo(
-                chat_id=member.chat.id,
-                photo=welcome_photo,
-                caption=caption,
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton(button_text, url=deep_link)]
-                ])
-            )
+                # Generate a deep link to open the user's profile
+                deep_link = f"tg://openmessage?user_id={user.id}"
 
-            # Schedule a task to delete the message after 30 seconds
-            async def delete_message():
-                await asyncio.sleep(30)
-                await message.delete()
+                # Send the message with the photo, caption, and button
+                message = await client.send_photo(
+                    chat_id=member.chat.id,
+                    photo=welcome_photo,
+                    caption=caption,
+                    reply_markup=InlineKeyboardMarkup([
+                        [InlineKeyboardButton(button_text, url=deep_link)]
+                    ])
+                )
 
-            # Run the task
-            asyncio.create_task(delete_message())
-            
+                # Schedule a task to delete the message after 30 seconds
+                async def delete_message():
+                    await asyncio.sleep(30)
+                    await message.delete()
+
+                # Run the task
+                asyncio.create_task(delete_message())
+            else:
+                print(f"Failed to create welcome photo for user {user.id}.")
+
         except RPCError as e:
             print(e)
             return
     else:
         # Handle the case where the user has no profile photo
         print(f"User {user.id} has no profile photo.")
-        
