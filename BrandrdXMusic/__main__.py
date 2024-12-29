@@ -12,6 +12,8 @@ from BrandrdXMusic.plugins import ALL_MODULES
 from BrandrdXMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
+# Import the new script
+from BrandrdXMusic.plugins.tools import voice_chat_notifications
 
 async def init():
     if (
