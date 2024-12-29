@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+import asyncio
 
 # Initialize the Pyrogram client with your configuration
 app = Client("my_account")
@@ -31,5 +32,8 @@ async def user_groups(client, message):
     # Send the text file as a document
     await message.reply_document(f"user_{user_id}_groups.txt")
 
-# Start the Pyrogram client
-app.run()
+# Check if the event loop is already running
+if not asyncio.get_event_loop().is_running():
+    app.run()
+else:
+    app.start()
