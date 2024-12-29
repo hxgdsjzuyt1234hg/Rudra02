@@ -3,14 +3,26 @@ from pyrogram.types import Message
 
 app = Client("my_bot")
 
-@app.on_message(filters.command("start_bot") & filters.user(OWNER_ID))
-async def start_bot(client: Client, message: Message):
-    await message.reply("Bot is now running!")
+async def is_admin(client, message: Message):
+    user_id = message.from_user.id
+    chat_id = message.chat.id
+    member = await client.get_chat_member(chat_id, user_id)
+    return member.status in ("administrator", "creator")
 
-@app.on_message(filters.command("stop_bot") & filters.user(OWNER_ID))
+@app.on_message(filters.command("start_bot"))
+async def start_bot(client: Client, message: Message):
+    if await is_admin(client, message):
+        await message.reply("Bot is now running!")
+    else:
+        await message.reply("You are not authorized to use this command.")
+
+@app.on_message(filters.command("stop_bot"))
 async def stop_bot(client: Client, message: Message):
-    await message.reply("Bot is stopping...")
-    await app.stop()
+    if await is_admin(client, message):
+        await message.reply("Bot is stopping...")
+        await app.stop()
+    else:
+        await message.reply("You are not authorized to use this command.")
 
 @app.on_message(filters.video_chat_started)
 async def vc_started(client: Client, message: Message):
