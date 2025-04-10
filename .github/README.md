@@ -98,11 +98,11 @@
 </h3>
 
 <p align="center">
-<a href="https://t.me/Frozensupport1"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="[https://t.me/Frozensupport1](https://t.me/MRMOTUPATLUCHAT)"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 
 <p align="center">
-<a href="https://t.me/Frozensupport1"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="[[[[https://t.me/MRMOTUPATLUCHAT](https://t.me/MRMOTUPATLUCHAT)](https://t.me/MRMOTUPATLUCHAT)](https://t.me/MRMOTUPATLUCHAT)](https://t.me/MRMOTUPATLUCHAT)"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 
 - <b> _sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [Frozen](https://github.com/prashantsahlot) ғᴏʀ [ᴍᴜsɪᴄ ʙᴏᴛ](https://t.me/Frozensupport1)_</b>
