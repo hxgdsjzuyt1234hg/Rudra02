@@ -14,32 +14,32 @@
     "env": {
       "API_ID": {
         "description": "Get this value from https://my.telegram.org",
-        "value": "",
+        "value": "16002056",
         "required": true
       },
       "API_HASH": {
         "description": "Get this value from https://my.telegram.org",
-        "value": "",
+        "value": "b06616fe5cc2f112f902d5af62110bdb",
         "required": true
       },
       "BOT_TOKEN": {
         "description": "A Bot's token from Botfather",
-        "value": "",
+        "value": "7222092630:AAH63FLYhYyMuAWaNwwIIPcr81tcUIscJgk",
         "required": true
       },
       "MONGO_DB_URI": {
         "description": "Get a mongodb url from https://cloud.mongodb.com.",
-        "value": "",
+        "value": "mongodb+srv://ajaybabu69f:XF0vwerJ7QuyYJGS@cluster0.1vop5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
         "required": true
       },
       "OWNER_ID": {
         "description": "The user id of user whom you would like to add as OWNER.",
-        "value": "",
+        "value": "7886419837",
         "required": true
       },
       "STRING_SESSION": {
         "description": "A Pyrogram v2 String Session from any session bot on Telegram.",
-        "value": "",
+        "value": "BQAf70YAjiuAlhr_IV4oM4ZHSY-523C-Qh4ussYAnrYLUjYm0Xx79AkRfg93AFNYiU6vvTnwKWSiQ4kfAIEARCCp_XGsbT7n7WAcLhZbeU3eZ1jAAi-UMlJGVtXRto_ZE5iDgZECf9eFNxkVzX-wkI-KW9HcM1wIHoHzf5giq_G8c_kdwIV2qKXSitzrejzck_zB_6LokBcMt0cYjioGRmlyqPNvAGs-CKTXQ5Xq9royqCyb2BedSpEs7XvJKz6iYQvnm2xZNGmhtPthAu9RiASUBhp2ZuQUMSVpP6JGyjflgOTpeBUP4ClC56ySzQTPLbGbdRbLS-Sa76zor3zH0pBo_Kp-4wAAAAGqLuGNAA",
         "required": true
       },
       "HEROKU_API_KEY": {
@@ -54,7 +54,7 @@
       },
       "LOGGER_ID": {
         "description": "Your Log Group ID, add your bot and promote as an admin with full rights! and turn on vc. Don't Add Channel's ID. and the assistant acc shoud not be the owner of log gc",
-        "value": "",
+        "value": "-1002372170981",
         "required": true
       }
     },
